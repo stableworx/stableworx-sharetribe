@@ -7,7 +7,7 @@ import classNames from 'classnames';
 
 import { FormattedMessage, injectIntl, intlShape } from '../../../util/reactIntl';
 import * as validators from '../../../util/validators';
-import { Form, PrimaryButton, FieldTextInput } from '../../../components';
+import { Form, PrimaryButton, FieldTextInput, FieldBoolean } from '../../../components';
 
 import css from './SignupForm.module.css';
 
@@ -145,6 +145,15 @@ const SignupFormComponent = props => (
                 id: 'SignupForm.passwordPlaceholder',
               })}
               validate={passwordValidators}
+            />
+            <FieldBoolean
+              className={css.isWorker}
+              id={formId ? `${formId}.isWorker` : 'isWorker'}
+              name="isWorker"
+              defaultValue={false}
+              label="Are you a worker?"
+              placeholder="Choose yes/no"
+              validate={validators.requiredBoolean('You need to choose yes or no.')}
             />
           </div>
 
