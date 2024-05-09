@@ -95,14 +95,24 @@
   margin: 0;
 }
 
+.authorAvatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
 .authorInfo {
   /* Font */
   composes: marketplaceTinyFontStyles from global;
   font-weight: var(--fontWeightMedium);
   color: var(--colorGrey700);
-
+  font-weight: 800;
   padding-top: 4px;
   padding-bottom: 4px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
 
   /* Remove default margins from font */
   margin-top: 0;
@@ -112,6 +122,12 @@
     margin-top: 0;
     margin-bottom: 0;
   }
+}
+
+.authorLinkBtn {
+  font-size: 10px;
+  min-height: 20px;
+  width: 80px;
 }
 
 .longWord {

@@ -14,7 +14,7 @@ import { richText } from '../../util/richText';
 import { createSlug } from '../../util/urlHelpers';
 import { isBookingProcessAlias } from '../../transactions/transaction';
 
-import { AspectRatioWrapper, NamedLink, ResponsiveImage } from '../../components';
+import { AspectRatioWrapper, Button, NamedLink, ResponsiveImage } from '../../components';
 
 import css from './ListingCard.module.css';
 
@@ -77,6 +77,7 @@ export const ListingCardComponent = props => {
     renderSizes,
     setActiveListing,
     showAuthorInfo,
+    authorObj,
   } = props;
   const classes = classNames(rootClassName || css.root, className);
   const currentListing = ensureListing(listing);
@@ -131,7 +132,17 @@ export const ListingCardComponent = props => {
           </div>
           {showAuthorInfo ? (
             <div className={css.authorInfo}>
+              <ResponsiveImage
+                className={css.authorAvatar}
+                isOwnerAvatar
+                alt={authorName}
+                image={authorObj.profileImage}
+                variants={authorObj.profileImage.attributes.variants['listing-card'].url}
+              />
               <FormattedMessage id="ListingCard.author" values={{ authorName }} />
+              <Button className={css.authorLinkBtn}>
+                View profile
+              </Button>
             </div>
           ) : null}
         </div>
@@ -146,6 +157,7 @@ ListingCardComponent.defaultProps = {
   renderSizes: null,
   setActiveListing: null,
   showAuthorInfo: true,
+  authorObj: '',
 };
 
 ListingCardComponent.propTypes = {
@@ -159,6 +171,7 @@ ListingCardComponent.propTypes = {
   renderSizes: string,
 
   setActiveListing: func,
+  authorObj: propTypes.string,
 };
 
 export default injectIntl(ListingCardComponent);
