@@ -405,6 +405,7 @@ export const AuthenticationPageComponent = props => {
   const user = ensureCurrentUser(currentUser);
   const currentUserLoaded = !!user.id;
   const isLogin = tab === 'login';
+  const isWorker = user && user.attributes.profile.protectedData?.isWorker;
 
   // We only want to show the email verification dialog in the signup
   // tab if the user isn't being redirected somewhere else
@@ -415,8 +416,10 @@ export const AuthenticationPageComponent = props => {
   // Already authenticated, redirect away from auth page
   if (isAuthenticated && from) {
     return <Redirect to={from} />;
-  } else if (isAuthenticated && currentUserLoaded && !showEmailVerification) {
+  } else if (isAuthenticated && currentUserLoaded && !showEmailVerification && !isWorker) {
     return <NamedRedirect name="LandingPage" />;
+  } else if (isAuthenticated && currentUserLoaded && !showEmailVerification && isWorker) {
+    return <NamedRedirect name="QuizPage" />;
   }
 
   const resendErrorTranslationId = isTooManyEmailVerificationRequestsError(

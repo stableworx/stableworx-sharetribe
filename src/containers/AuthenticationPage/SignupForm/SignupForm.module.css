@@ -28,7 +28,8 @@
   width: calc(66% - 9px);
 }
 
-.password {
+.password,
+.isWorker {
   composes: marketplaceModalPasswordMargins from global;
 }
 

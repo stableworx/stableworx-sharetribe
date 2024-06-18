@@ -35,6 +35,7 @@ const SearchPageWithGrid = loadable(() => import(/* webpackChunkName: "SearchPag
 const StripePayoutPage = loadable(() => import(/* webpackChunkName: "StripePayoutPage" */ '../containers/StripePayoutPage/StripePayoutPage'));
 const TermsOfServicePage = loadable(() => import(/* webpackChunkName: "TermsOfServicePage" */ '../containers/TermsOfServicePage/TermsOfServicePage'));
 const TransactionPage = loadable(() => import(/* webpackChunkName: "TransactionPage" */ '../containers/TransactionPage/TransactionPage'));
+const QuizPage = loadable(() => import(/* webpackChunkName: "QuizPage" */ '../containers/QuizPage/QuizPage'));
 
 // Styleguide helps you to review current components and develop new ones
 const StyleguidePage = loadable(() => import(/* webpackChunkName: "StyleguidePage" */ '../containers/StyleguidePage/StyleguidePage'));
@@ -369,6 +370,13 @@ const routeConfiguration = (layoutConfig) => {
       name: 'PreviewResolverPage',
       component: PreviewResolverPage ,
     },
+    
+    // For testing the quiz page
+    {
+      path: '/quiz',
+      name: 'QuizPage',
+      component: QuizPage,
+    }
   ];
 };
 
